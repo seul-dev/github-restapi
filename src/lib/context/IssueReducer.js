@@ -1,54 +1,30 @@
-const loadingState = {
-  loading: true,
-  data: null,
-  error: null,
-};
-
-const success = (data) => ({
-  loading: false,
-  data,
-  error: null,
-});
-
-const error = (error) => ({
-  loading: false,
-  data: null,
-  error: error,
-});
-
 const issueReducer = (state, action) => {
   switch (action.type) {
     case 'GET_ISSUELIST':
       return {
         ...state,
-        issueList: loadingState,
-      };
-    case 'GET_ISSUELIST_SUCCESS':
-      return {
-        ...state,
-        issueList: success(action.data),
-      };
-    case 'GET_ISSUELIST_ERROR':
-      return {
-        ...state,
-        issueList: error(action.error),
+        issueList: [...state.issueList, ...action.payload],
+        loading: false,
       };
     case 'GET_ISSUE':
       return {
         ...state,
-        issue: loadingState,
+        issue: action.payload,
+        loading: false,
       };
-    case 'GET_ISSUE_SUCCESS':
+    case 'SET_LOADING':
       return {
         ...state,
-        issue: success(action.data),
+        loading: true,
       };
-    case 'GET_ISSUE_ERROR':
+    case 'CLEAR_USERS':
       return {
         ...state,
-        issue: error(action.error),
+        users: [],
       };
     default:
-      throw new Error(`Unhanded action type: ${action.type}`);
+      return state;
   }
 };
+
+export default issueReducer;

@@ -1,14 +1,27 @@
-import React, { createContext, useReducer, useContext } from 'react';
+import { createContext, useReducer } from 'react';
+import issueReducer from './IssueReducer';
 
-const initialState = {
-  issueList: {
+const IssueContext = createContext();
+
+export const IssueProvider = ({ children }) => {
+  const initialState = {
+    issueList: [],
+    issue: {},
     loading: false,
-    data: null,
-    error: null,
-  },
-  issue: {
-    loading: false,
-    data: null,
-    error: null,
-  },
+  };
+
+  const [state, dispatch] = useReducer(issueReducer, initialState);
+
+  return (
+    <IssueContext.Provider
+      value={{
+        ...state,
+        dispatch,
+      }}
+    >
+      {children}
+    </IssueContext.Provider>
+  );
 };
+
+export default IssueContext;

@@ -1,16 +1,16 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import List from '../Pages/List';
+import List from '../Pages/IssueList/List';
 import Detail from '../Pages/Detail';
 import Layout from './../Components/Layout/Layout';
 const Router = () => {
   return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<List />} />
-        <Route path="/:issue_number" element={<Detail />} />
-      </Routes>
-    </Layout>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path='/' element={<List />} />
+        <Route path='/:issue_number' element={<Detail />} />
+      </Route>
+    </Routes>
   );
 };
 

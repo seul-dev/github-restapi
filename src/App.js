@@ -1,8 +1,12 @@
-import './App.css';
 import Router from './Routes/Router';
+import { IssueProvider } from './lib/context/IssueContext';
 
 function App() {
-  return <Router />;
+  return (
+    <IssueProvider>
+      <Router />
+    </IssueProvider>
+  );
 }
 
 export default App;
