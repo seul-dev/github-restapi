@@ -3,7 +3,7 @@ const issueReducer = (state, action) => {
     case 'GET_ISSUELIST':
       return {
         ...state,
-        issueList: [...state.issueList, ...action.payload],
+        issueList: action.payload,
         loading: false,
       };
     case 'GET_ISSUE':

@@ -23,6 +23,7 @@ const Wrapper = styled.header`
 `;
 
 const StyledLink = styled(Link)`
-  font-size: 1.5rem;
+  font-size: 2rem;
+  font-weight: 700;
   color: black;
 `;
