@@ -10,7 +10,7 @@ const Item = ({ issue }) => {
   const { title, number, user, created_at, comments } = issue;
 
   return (
-    <Link to={`/${number}`}>
+    <Link to={`/issue/${number}`}>
       <Card>
         <IssueTitle>
           <IssueNumber>{`#${number}`}</IssueNumber>
